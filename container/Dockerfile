@@ -4,7 +4,8 @@
 FROM node:22-slim
 
 # Install system dependencies for Chromium
-RUN apt-get update && apt-get install -y \
+RUN apt-get -o Acquire::http::Pipeline-Depth=0 -o Acquire::http::No-Cache=True -o Acquire::BrokenProxy=true update && \
+    apt-get -o Acquire::http::Pipeline-Depth=0 -o Acquire::http::No-Cache=True -o Acquire::BrokenProxy=true install -y \
     chromium \
     fonts-liberation \
     fonts-noto-cjk \
